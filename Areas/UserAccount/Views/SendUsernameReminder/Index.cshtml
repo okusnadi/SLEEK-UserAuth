@@ -1,0 +1,26 @@
+﻿@model WebHost.Areas.UserAccount.Models.SendUsernameReminderInputModel
+@{
+    ViewBag.Title = "Send Username Reminder";
+}
+
+<h2>Send Username Reminder</h2>
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary("Errors")
+
+    @Html.AntiForgeryToken()
+    
+    <fieldset>
+        <legend>Enter your e-mail</legend>
+
+       @* @Html.EditorForModel()*@
+        
+        <div class="form-group">
+            @Html.TextBoxFor(x => x.Email, new { @placeholder = "e-mail", @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Email)         
+        </div>
+        <button class="btn btn-primary">Send Reminder</button>
+
+    </fieldset>
+}

@@ -1,0 +1,59 @@
+﻿@model WebHost.ViewModels.RegisterUser
+
+@{
+    ViewBag.Title = "Register";
+}
+
+<h2>Sign up for a new account</h2>
+@using (Html.BeginForm())
+{        
+    @Html.ValidationSummary(true)
+    @Html.AntiForgeryToken()
+
+    <div class="form-group">
+        <label for="UserName">Username*</label>
+        @Html.TextBoxFor(x => x.UserName, new { @class = "form-control", @placeholder = "e-mail" })
+        @Html.ValidationMessageFor(x => x.UserName)
+    </div>
+    <div class="form-group">
+        <label for="Password">Password</label>
+        @Html.PasswordFor(x => x.Password, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.Password)
+    </div>
+    <div class="form-group">
+        <label for="ConfirmPassword">Confirm</label>
+        @Html.PasswordFor(x => x.ConfirmPassword, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.ConfirmPassword)
+    </div>
+    <legend>Personal Details</legend>      
+    <div class="form-group">
+        <label for="FirstName">First Name*</label>
+        @Html.TextBoxFor(x => x.FirstName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.FirstName)
+    </div>
+    <div class="form-group">
+        <label for="LastName">Last Name*</label>
+        @Html.TextBoxFor(x => x.LastName, new { @class = "form-control" })
+        @Html.ValidationMessageFor(x => x.LastName)
+    </div>
+    <legend>Professional Details</legend>
+    
+     <div class="form-group">
+        <label for="Organisation">Organisation</label>
+         @Html.TextBoxFor(x => x.Organisation, new { @class = "form-control" })
+         @Html.ValidationMessageFor(x => x.Organisation)
+    </div>
+     <div class="form-group">
+        <label for="Title">Title</label>
+        @Html.TextBoxFor(x => x.Title, new { @class = "form-control" })
+         @Html.ValidationMessageFor(x => x.Title)
+    </div>
+    
+    <div class="form-group">
+        <button class="btn btn-primary">Register</button>
+    </div> 
+}
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

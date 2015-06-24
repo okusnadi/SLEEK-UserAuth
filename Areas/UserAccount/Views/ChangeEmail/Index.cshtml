@@ -1,0 +1,38 @@
+﻿@model WebHost.Areas.UserAccount.Models.ChangeEmailRequestInputModel
+@{
+    ViewBag.Title = "Change Email (Username)";
+}
+
+<h2>@ViewBag.Title</h2>
+
+@using (Html.BeginForm("Index", "ChangeEmail", FormMethod.Post, new { @class = "form-inline"}))
+{
+    @Html.ValidationSummary("Error")
+    @Html.AntiForgeryToken()
+
+    <legend>Enter your new email (username)</legend>
+    @*@Html.EditorForModel()*@
+    <div class="form-group">
+        @Html.TextBoxFor(x => x.NewEmail, new { @class = "form-control col-sm-2" })
+        @Html.ValidationMessageFor(x => x.NewEmail)         
+    </div>
+    <button class="btn btn-primary">Submit</button>            
+    
+}
+
+@*@using (Html.BeginForm("Confirm", "ChangeEmail", FormMethod.Post, new { @class = "form-inline"}))
+{
+  
+        <legend>Confirm</legend>
+        <label for="id" class="col-sm-1">Key </label>
+        <div class="form-group col-sm-15">            
+            <input class="form-control" id="id" name="id" />            
+        </div>       
+        <button class="btn btn-primary">Submit</button>
+    
+        
+}*@
+
+@section Scripts {
+    @Scripts.Render("~/bundles/jqueryval")
+}

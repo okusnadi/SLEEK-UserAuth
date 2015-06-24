@@ -1,0 +1,36 @@
+﻿@model WebHost.Areas.UserAccount.Models.PasswordResetInputModel
+@{
+    ViewBag.Title = "Forgot Password";
+}
+
+@using (Html.BeginForm())
+{
+    @Html.ValidationSummary("Please correct the following errors")
+    @Html.AntiForgeryToken()
+
+    @*<fieldset class="editor small">*@
+        <br />
+        <legend>@ViewBag.Title</legend>
+        @*@Html.EditorForModel()*@
+        <label>Enter your e-mail to receive password reset instructions</label>
+        <br />            
+        <div class="form-group">
+            @Html.TextBoxFor(x => x.Email, new { @placeholder = "e-mail", @class = "form-control" })
+            @Html.ValidationMessageFor(x => x.Email)         
+        </div>
+        <button class="btn btn-primary">Submit</button>            
+
+    @*</fieldset>*@
+}
+
+@*@using (Html.BeginForm("Confirm", "PasswordReset", FormMethod.Post))
+{
+    <fieldset>
+        <legend>Confirm</legend>
+        <p>
+            <label for="id">Key</label>
+            <input id="id" name="id" />
+        </p>
+        <p class="buttons"><button>Submit</button></p>
+    </fieldset>
+}*@
